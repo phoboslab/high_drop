@@ -5,6 +5,12 @@ map_t *map;
 bool game_over;
 entity_t *player;
 sound_source_t *sound_game_over;
+
+static pl_synth_sound_t sound_game_over_synth = {
+	.synth = {8,0,0,1,160,1,6,0,0,1,160,3,0,226,0,13932,160,4,4523,199,3,47}, 
+	.row_len = 5513, .note = 135
+};
+
 image_t *backdrop;
 
 void generate_row(int row) {
@@ -42,7 +48,7 @@ static void init(void) {
 	g.speed = 1;
 	game_over = false;
 	backdrop = image("assets/backdrop.qoi");
-	sound_game_over = sound_source("assets/game_over.qoa");
+	sound_game_over = sound_source_synth_sound(&sound_game_over_synth);
 
 	map = map_with_data(8, vec2i(8, 18), NULL);
 	map->tileset = image("assets/tiles.qoi");

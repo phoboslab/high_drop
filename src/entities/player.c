@@ -4,10 +4,15 @@ static anim_def_t *anim_idle;
 static image_t *hints;
 static sound_source_t *sound_bounce;
 
+static pl_synth_sound_t sound_bounce_synth = {
+	.synth = {8,2,0,0,255,2,8,0,0,0,0,0,0,344,262,8885,255,4,1364,201,0,0,0,0,1,0,7,48,2}, 
+	.row_len = 5513, .note = 135
+};
+
 static void load(void) {
 	image_t *sheet = image("assets/player.qoi");
 	anim_idle = anim_def(sheet, vec2i(4, 4), 1.0, {0});
-	sound_bounce = sound_source("assets/bounce.qoa");
+	sound_bounce = sound_source_synth_sound(&sound_bounce_synth);
 	hints = image("assets/hints.qoi");
 }
 

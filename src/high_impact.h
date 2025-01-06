@@ -11,7 +11,7 @@
 // particular game. Increase them as needed. Allocating a few GB and thousands
 // of entities is totally fine.
 
-#define ALLOC_SIZE (2 * 1024 * 1024)
+#define ALLOC_SIZE (32 * 1024 * 1024)
 #define ALLOC_TEMP_OBJECTS_MAX 8
 
 #define WINDOW_TITLE "Drop"
